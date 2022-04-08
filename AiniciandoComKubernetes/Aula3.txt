@@ -9,6 +9,8 @@ Por padrão o Kind só cria um Node no Cluster.
 guardar todas as credenciais, certificados e informações necessárias para essa comunicação.
 Esse arquivo normalmente fica em ~/.kube/config.
 Para se comunicar com um cluster use o comando:
+kubectl cluster-info --context nomeDoCluster
+No nosso caso ficaria:
 kubectl cluster-info --context kind-kind
 
 3. O kind funciona através do Docker, então note que ao criar um Node aparece um 
@@ -17,3 +19,5 @@ container no Docker, isso porque o Kind cria um container e cada Node roda em um
 4. Com o comando: "kubectl get nodes" podemos ver todos os nodes criados no cluster que 
 estamos usando no momento. Observe que o status dele é READY, ou seja, que está 
 pronto para utilizarmos.
+
+

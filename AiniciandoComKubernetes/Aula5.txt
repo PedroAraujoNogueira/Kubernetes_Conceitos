@@ -1,0 +1,13 @@
+MUDANÇA DE CONTEXTO E EXTENSÃO DO VSCODE
+
+1. Para mudarmos de um cluster para outro podemos usar o comando:
+kubectl config use-context nomeDocluster. Por exemplo:
+kubectl config use-context first-cluster-kubernetes
+
+2. Extensão do VSCODE: baixe a extensão "kubernetes" da própria microsoft.
+Ao clicar no simbolo dessa extensão que aparecerá do lado esquerdo do seu VSCODE
+você verá que ele mostra todos os clusters que temos. Ela faz isso procurando 
+no ~/.kube/config. Observe que ela mostra em qual cluster estamos atualmente e
+para mudarmos de cluster basta clicarmos com o botão direito no cluster que
+queremos e escolher "Set as Current Cluster" e essa extensão vai rodar por 
+baixo dos panos o comando kubectl config use-context nomeDocluster.

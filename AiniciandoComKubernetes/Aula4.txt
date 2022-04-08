@@ -1,0 +1,22 @@
+CRIANDO CLUSTER MULTI NODE
+
+1. Para consultar os clusters usando Kind podemos usar o comando:
+kind get clusters
+e para deletar um cluster usamos o comando:
+kind delete clusters nomeDoCluster
+
+2. No arquivo k8s/kind.yaml vamos definir como que será criado nosso cluster.
+Observe que em um dos "role" colocamos "control-plane", esse vai ser o Master, esse node que 
+vai gerenciar nosso kubernetes e gerenciar os outros Nodes com "role" igual worker.
+Para criar o cluster usando as configurações colocadas no arquivo k8s/kind.yaml 
+usamos o comando kind create cluster --config=k8s/kind.yaml
+
+3. Dica: quando formos trabalhar com o kubernetes em produção vamos precisar ter no 
+mínimo 3 nodes e para termos um ambiente resiliente precisamos ter multiplos 
+master(multiplos control-plane), porém quando trabalhamos com o kubernetes na Nuvem nós
+não precisamos nos preocupar com esse gerenciamento, pois a própria nuvem vai prover nossos
+masters.
+
+4. Para sabermos todos os clusters que temos podemos usar o comando:
+kubectl config get-clusters
+
