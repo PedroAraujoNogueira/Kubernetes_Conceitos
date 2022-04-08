@@ -1,0 +1,23 @@
+INSTALANDO KIND
+
+O Kind instala o kubernetes na nossa máquina porém cada Node é um container Docker, logo
+não precisamos de máquinas virtuais sendo bem leve.
+
+Para usarmos o Kind é recomendado que também tenhamos instalado o kubectl, que é o CLI 
+do Kubernetes e é ele quem vai se comunicar com o servidor do Kubernetes. Se instalarmos
+o Kind e não instalarmos o kubectl nós teremos um cluster rodando porém não seremos 
+capazes de nos comunicar com esse cluster, ou seja, não seremos capazes de gerenciar 
+nosso cluster sem o kubectl. 
+
+Para instalar o Kubectl podemos usar a documentação do kubernetes:
+https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+
+Para instalar o Kind podemos usar esse link:
+https://kind.sigs.k8s.io/docs/user/quick-start/
+Usei esses 3 comandos mostrados no tutorial:
+1. curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.12.0/kind-linux-amd64
+2. chmod +x ./kind
+3. mv ./kind /some-dir-in-your-PATH/kind
+Onde usei /some-dir-in-your-PATH/kind = $HOME/.local/bin que é uma pasta do meu 
+usuario que já está nas variáveis de ambiente do linux, porém poderia ter colocado
+em qualquer outra pasta e colocado essa pasta nas variáveis de ambiente do linux. 
