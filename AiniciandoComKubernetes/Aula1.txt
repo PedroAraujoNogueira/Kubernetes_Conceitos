@@ -1,0 +1,21 @@
+INTRODUÇÃO AO KUBERNETES.
+
+1. O Kubernetes(K8s) é um produto Open Source utilizado para automatizar a 
+implantação, o dimensionamento e o gerenciamento de aplicativos em container. 
+2. O Kubernetes é um excelente orquestrador de containers.
+3. O Kubernetes veio de um projeto iniciado pelo Google, logo o GCP(nuvem do Google)
+tem uma integração muito boa para uso do kubernetes em sua nuvem.
+4. kubectl é a CLI do kubernetes.
+5. O Deployment é um arquivo que específica para o Kubernetes o que deve ser 
+criado. Ou seja, ele é o responsável por provisionar os Pods e as réplicas
+dos Pods. A quantidade de réplicas que vamos querer de um Pod pode ser específicada
+tanto no Deployment quanto no replicaSets. 
+6. O Kubernetes trabalha usando cluster, que são conjuntos de máquinas, sendo cada
+máquina chamada de Node(Nó).
+7. Um dos Nó do cluster é o Node Master que controla todo o processo que os outros Nós 
+vão fazer.
+8. Cada máquina do Cluster possui uma quantidade de vCPU e de memória.
+9. Dentro dos Nodes nós vamos ter Pods.
+10. Pod é a menor unidade do kubernetes, é nela que vai estar nosso container.
+11. Um Pod pode ter mais de um container, porém normalmente é melhor que cada 
+Pod contenha apenas um container. 
