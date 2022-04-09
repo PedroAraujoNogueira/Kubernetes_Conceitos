@@ -1,7 +1,8 @@
--> Trabalhando com Pods
+TRABALHANDO COM PODS
 
 1. Pods são a menor unidade do Kubernetes. Dentro do Pod teremos nosso container rodando. 
-O Pod é como se fosse uma máquina dentro do Kubernetes, pois ele tem IP dentre outras coisas.
+O Pod é como se fosse uma máquina dentro de outra máquina(Node) que pertence a um cluster 
+do Kubernetes, pois cada Pod tem seu próprio IP dentre outras coisas.
 
 2. Cada recurso que vamos utilizar pode ter uma versão de API diferente, então vale a pena
 olhar a documentação para saber quais recursos estão disponíveis em cada versão da API do 
@@ -24,8 +25,15 @@ Para vermos todos os Pods daquele cluster use o comando:
 "kubectl get pods" ou "kubectl get pod" ou ainda "kubectl get po"
 
 5. O Pod já rodando no Kubernetes, mas nós não criamos nenhum mecanismo de rede para que
-possamos acessar esse nosso container. Mesmo sem termos criado uma network no kubernetes
+possamos acessar esse nosso container. Porém mesmo sem termos criado uma network no kubernetes
 podemos acessar o Pod fazendo um redirecionamento de porta com o seguinte comando:
 kubectl port-forward pod/goserver 3001:3000
+OBS: 
+Port forwarding É o ato de direcionar um ponto da rede para outro. Esta técnica pode
+permitir que um usuário alcance um ponto em um endereço de IP privado (como o de uma LAN)
+mesmo estando fora dessa rede.
 
--> Criando primeira ReplicaSet
+6. kubectl delete pod goserver 
+Esse comando vai deletar nosso Pod e aqui podemos ver um problema, nosso Pod não será
+recriado. Da forma como criamos nosso Pod ele não vai ser recriado caso haja algum 
+problema, pois apenas criamos um Pod "solto", ou seja, não estamos gerenciando esse Pod.
