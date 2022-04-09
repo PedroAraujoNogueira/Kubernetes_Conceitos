@@ -1,0 +1,31 @@
+-> Trabalhando com Pods
+
+1. Pods são a menor unidade do Kubernetes. Dentro do Pod teremos nosso container rodando. 
+O Pod é como se fosse uma máquina dentro do Kubernetes, pois ele tem IP dentre outras coisas.
+
+2. Cada recurso que vamos utilizar pode ter uma versão de API diferente, então vale a pena
+olhar a documentação para saber quais recursos estão disponíveis em cada versão da API do 
+kubernetes.
+
+3. Para construir algo no kubernetes podemos usar arquivos .yaml, no caso do pod.yaml
+especificamos algumas informações como:
+3.1. A versão da API no campo "apiVersion".
+3.2. O tipo do objeto que estamos querendo criar no campo "kind". 
+3.3. Informações adicionais como "name" e "labels"(pode ser usado para 
+agrupar objetos) no campo "metadata". 
+3.4. Especificações como a quantidade de containers que terão naquele Pod dentre outras 
+coisas no campo "spec".
+
+4. Após configurarmos tudo vamos utilizar um comando muito usado que é:
+kubectl apply -f pod.yaml
+Esse comando vai aplicar(apply) o arquivo(-f para dizer que é um arquivo) pod.yaml.
+Após utilizar o comando veja que criamos nosso Pod.
+Para vermos todos os Pods daquele cluster use o comando:
+"kubectl get pods" ou "kubectl get pod" ou ainda "kubectl get po"
+
+5. O Pod já rodando no Kubernetes, mas nós não criamos nenhum mecanismo de rede para que
+possamos acessar esse nosso container. Mesmo sem termos criado uma network no kubernetes
+podemos acessar o Pod fazendo um redirecionamento de porta com o seguinte comando:
+kubectl port-forward pod/goserver 3001:3000
+
+-> Criando primeira ReplicaSet

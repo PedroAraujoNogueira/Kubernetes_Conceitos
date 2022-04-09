@@ -1,0 +1,13 @@
+CRIANDO APLICAÇÃO EXEMPLO E imagem
+
+1. Criei uma aplicação em go para usar como exemplo.
+
+2. Criei um arquivo Dockerfile para gerar uma imagem da nossa aplicação.
+O comando "RUN go build -o server ." vai gerar um executável da aplicação e o 
+comando "CMD ["./server"]" vai executar o executável.
+
+3. Rodar o comando para gerar a imagem: docker build -t pedroaraujonogueira/hello-go .
+
+4. Para ver se sua imagem está funcionando use o comando a seguir para gerar um container:
+docker run --rm -p 3000:3000 pedroaraujonogueira/hello-go 
+Agora publique no dockerHub com o comando "docker push nomeDaConta/nomeDoRepositorio"
