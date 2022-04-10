@@ -18,7 +18,7 @@ agrupar objetos) no campo "metadata".
 coisas no campo "spec".
 
 4. Após configurarmos tudo vamos utilizar um comando muito usado que é:
-kubectl apply -f pod.yaml
+kubectl apply -f nomeDoArquivo.yaml
 Esse comando vai aplicar(apply) o arquivo(-f para dizer que é um arquivo) pod.yaml.
 Após utilizar o comando veja que criamos nosso Pod.
 Para vermos todos os Pods daquele cluster use o comando:

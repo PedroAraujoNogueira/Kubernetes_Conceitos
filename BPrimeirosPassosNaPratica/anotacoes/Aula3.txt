@@ -1,0 +1,23 @@
+CRIANDO PRIMEIRA REPLICASET
+
+1. O ReplicaSet é um objeto que gerencia os Pods, ou seja, o ReplicaSet vai monitorar
+a quantidade de Pods que temos e caso algum Pod caia ele vai se encarregar de criar
+outro Pod.
+
+2. Note no arquivo replicaset.yaml que o "kind" dele é ReplicaSet. Outro ponto importante
+é que dentro das especificações(spec) definimos a quantidade total de replicas e 
+no atributo template nós basicamente replicamos oq estava no arquivo pod.yaml. 
+
+3. Podemos usar o comando "kubectl get replicasets" para ver os replicasets que temos.
+
+4. Para vermos o resultado do replicaset gerenciando nossos pods podemos fazer os 
+seguintes passos:
+4.1. kubectl delete pod nomeDoPod -> esse comando vai deletar o pod com o nome passado.
+4.2. kubectl get pods -> veja que o replicaset está entrando em ação e criando outro
+pod para a gente, já que um foi deletado. Diferentemente do que aconteceu com o arquivo
+com "kind: pod" em que esse gerenciamento não acontece. 
+
+5. O replicaset tem um problema, se fizermos alguma alteração no arquivo.yaml do 
+replicaset somente os novos pods serão criados com essas alterações, porém o replicaset
+não vai deletar os pods que já existem e construir todos novamente com as novas 
+configurações do arquivo. 
