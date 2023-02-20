@@ -22,5 +22,7 @@ e a imagem nova não estaria sendo usada por nenhum Pod. A nova imagem só seria
 quando algum Pod precisasse ser recriado ou se deletarmos algum Pod para que ele seja
 recriado.
 
+OBS: Com o replicaset, para aplicarmos a alteração temos que deletar cada Pod manualmente.
+
 2. kubectl describe pod nomeDoPod -> mostra várias informações do Pod, inclusive a imagem
 que está rodando dentro desse Pod.

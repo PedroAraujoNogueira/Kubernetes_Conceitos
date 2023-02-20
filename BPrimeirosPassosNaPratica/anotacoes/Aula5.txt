@@ -1,0 +1,40 @@
+IMPLEMENTANDO DEPLOYMENT
+
+1. Para resolver o problema que temos usando o "kind: ReplicaSet", podemos usar 
+o "kind: Deployment", pois no kubernetes a hierarquia de grandeza funciona 
+assim:
+Deployment -> ReplicaSet -> Pod
+Ou seja, quando criamos um Deployment, o Deployment vai criar um ReplicaSet
+e o ReplicaSet vai criar nossos Pods. Porém se eu mudar a versão do meu 
+Deployment, o Deployment vai criar um novo ReplicaSet e esse novo ReplicaSet
+vai criar novos Pods. O ReplicaSet antigo não vai ser deletado, porém vai matar 
+todos os Pods que ele usava e ficar sem nenhum Pod rodando. 
+
+2. Para deletar um replicaset usamos o comando:
+kubectl delete replicaset nomeDoReplicaSet.
+
+3. Para o exemplo desse tópico vamos:
+3.1. kubectl get replicasets
+3.2. kubectl delete replicaset nomeDoReplicaSet -> pois agora o Deployment que vai 
+construir nosso replicaset automaticamente.
+3.3. kubectl apply -f BPrimeirosPassosNaPratica/deployment.yaml
+3.4. kubectl get pods -> poderemos ver que todos nossos Pods estão sendo criados.
+Note que os nomes dos Pods são compostos por: 
+nomeDoDeployment(goserver)-hashDoReplicaset-hashDoPod
+3.5. Vamos alterar a imagem do arquivo deployment.yaml de 
+pedroaraujonogueira/hello-go:latest
+para
+pedroaraujonogueira/hello-go:v2
+3.6. Rode novamente o comando: 
+kubectl apply -f BPrimeirosPassosNaPratica/deployment.yaml
+3.7. kubectl get pods -> veja que os Pods estão sendo recriados automaticamente 
+e todos contendo a nova imagem, diferentemente do que aconteceu quando rodamos 
+o arquivo com "kind: ReplicaSet".
+Outra vantagem é que dessa forma temos 0 down time, ou seja, sempre terá um Pod
+rodando, pois o deployment mata um Pod de cada vez e só mata o Pod seguinte
+quando o Pod que ele matou anteriormente já tiver sido criado.
+3.8. Se aplicarmos o comando:
+kubectl describe pod nomeDoPod
+Veremos que o Pod estará com a nova imagem -> pedroaraujonogueira/hello-go:v2
+
+OBS: no dia a dia vamos preferir sempre usar o Deployment, por causa de suas facilidades.
